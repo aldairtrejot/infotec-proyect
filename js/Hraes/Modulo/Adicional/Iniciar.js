@@ -38,11 +38,11 @@ function gurdarAdicionals() {
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Información adicional modificada con éxito');
+                mensajeExito('Información adicional modificada con éxito');
             } else if (data == 'add') {
-                notyf.success('Información adicional agregada con éxito');  
+                mensajeExito('Información adicional agregada con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(mensajeSalida);
             }
             iniciarAdicional();
         }

@@ -12,9 +12,10 @@ function validarPercepcion(){
 
 }
 
+function handleChange(event){
+    let selectedOption = event.target.options[event.target.selectedIndex];
+    let id_cat_concepto = selectedOption.value;
 
-document.getElementById("id_cat_concepto").addEventListener("change", function() {
-    let id_cat_concepto = this.value;
     $.post("../../../../App/Controllers/Hrae/PercepcionesC/ConceptoC.php", {
         id_cat_concepto: id_cat_concepto,
     },
@@ -24,12 +25,10 @@ document.getElementById("id_cat_concepto").addEventListener("change", function()
             
             $('#id_cat_valores').empty();
             $('#id_cat_valores').html(valor)
-            $('#id_cat_valores').selectpicker('refresh');
-            $('.selectpicker').selectpicker();
+        
         }
     );
-  });
-
+}
 
 function validarConcepto(id_cat_concepto,id_tbl_empleados_hraes,id_object){
     $.post("../../../../App/Controllers/Hrae/PercepcionesC/ValidarConceptoC.php", {
@@ -45,7 +44,7 @@ function validarConcepto(id_cat_concepto,id_tbl_empleados_hraes,id_object){
             if (!bool){
                 agregarEditarByDbByPercepcion();
             } else {
-                notyf.error(message);
+                mensajeError(message);
             }
         }
     );

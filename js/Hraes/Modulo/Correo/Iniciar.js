@@ -59,12 +59,13 @@ function guardarCorreo() {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
     },
         function (data) {
+            console.log(data);
             if (data == 'edit'){
-                notyf.success('Correo electrónico modificado con éxito');
+                mensajeExito('Correo electrónico modificado con éxito');
             } else if (data == 'add') {
-                notyf.success('Correo electrónico agregado con éxito');  
+                mensajeExito('Correo electrónico agregado con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(data);
             }
             $("#agregar_editar_correo").modal("hide");
             buscarCorreo();
@@ -76,10 +77,10 @@ function eliminarCorreo(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "question",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#235B4E",
-        cancelButtonColor: "#6c757d",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -89,9 +90,9 @@ function eliminarCorreo(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    notyf.success('Correo electrónico eliminado con éxito')
+                    mensajeExito('Correo electrónico eliminado con éxito')
                 } else {
-                    notyf.error(mensajeSalida);
+                    mensajeError(data);
                 }
                 buscarCorreo();
             }

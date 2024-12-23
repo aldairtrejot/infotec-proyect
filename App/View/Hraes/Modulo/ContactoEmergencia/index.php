@@ -1,9 +1,8 @@
 <div class="row font-size-modulo">
     <div class="col-9">
         <div class="form-inline">
-            <button onclick="agregarEditarEmergencia(null)" type="button" class="btn btn-light" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
-                <span class="hide-menu text-button-add">&nbsp;Agregar</span>
+            <button onclick="agregarEditarEmergencia(null)" class="btn btn-light"><i class="fa fa-plus icon-size-add"></i>
+                <span class="hide-menu text-button-add font-size-modulo">&nbsp;Agregar contacto</span>
             </button>
         </div>
     </div>
@@ -15,10 +14,12 @@
 </div>
 
 <br>
-<div class="col-12 table-responsive">
-    <div class="text-center">
-        <table class="table table-bordered table-fixed" id="modulo_contacto_emergencia">
-        </table>
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <table class="table table-bordered" id="modulo_contacto_emergencia" style="width:100%">
+            </table>
+        </div>
     </div>
 </div>
 

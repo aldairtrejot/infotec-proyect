@@ -15,10 +15,10 @@ function validarTelefono(){
             if (telefono.length == 10 || telefono.length == 0){
                 validarEstatusTelefono(id_object, id_cat_estatus);
             } else {
-                notyf.error('Teléfono fijo debe tener 10 caracteres');
+                mensajeError('Teléfono fijo debe tener 10 caracteres');
             }
         } else {
-            notyf.error('Número telefónico debe tener 10 caracteres');
+            mensajeError('Número telefónico debe tener 10 caracteres');
         }
         
     }
@@ -38,7 +38,7 @@ function validarEstatusTelefono(id_object, id_cat_estatus) {
             if(bool){
                 agregarEditarByDbByTelefono();
             } else {
-                notyf.error(message);
+                mensajeError(message);
             }
         }
     );
@@ -48,7 +48,7 @@ function caracteresCount(text, number,value){
     let bool = true;
     if(value.length > number){
         bool = false
-        notyf.error(text + ' debe tener hasta un máximo de ' + number + ' caracteres')
+        mensajeError(text + ' debe tener hasta un máximo de ' + number + ' caracteres')
     } 
     return bool;
 }
@@ -57,7 +57,7 @@ function esEntero(text,num) {
     let bool = true;
     if (num.includes('.')){
         bool = false;
-        notyf.error(text + ' debe tener números enteros')
+        mensajeError(text + ' debe tener números enteros')
     }
     return bool;
 }

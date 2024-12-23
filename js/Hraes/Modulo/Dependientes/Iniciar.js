@@ -50,9 +50,6 @@ function agregarEditarDependiente(id_object){
             $("#apellido_paterno_d").val(entity.apellido_paterno);
             $("#id_cat_dependientes_economicos_d").val(entity.id_cat_dependientes_economicos);
             $("#apellido_materno_d").val(entity.apellido_materno);
-
-            $('#id_cat_dependientes_economicos_d').selectpicker('refresh');
-            $('.selectpicker').selectpicker();
         }
     );
 
@@ -82,11 +79,11 @@ function agregarEditarByDbByDependiente() {
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Dependiente económico modificado con éxito');
+                mensajeExito('Dependiente económico modificado con éxito');
             } else if (data == 'add') {
-                notyf.success('Dependiente económico agregado con éxito');  
+                mensajeExito('Dependiente económico agregado con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(data);
             }
             $("#agregar_editar_dependiente").modal("hide");
             buscarDependiente();
@@ -98,10 +95,10 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "question",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#235B4E",
-        cancelButtonColor: "#6c757d",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -111,9 +108,9 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    notyf.success('Dependiente económico eliminado con éxito')
+                    mensajeExito('Dependiente económico eliminado con éxito')
                 } else {
-                    notyf.error('El dependiente se encuentra en módulo de juguetes');
+                    mensajeError('El dependiente se encuentra en módulo de juguetes');
                 }
                 buscarDependiente();
             }
@@ -121,3 +118,49 @@ function eliminarDependiente(id_object) {//ELIMINAR USUARIO
     }
     });
 }
+
+/*
+function iniciarDependiente(){
+    iniciarTablaDependiente(id_tbl_empleados_hraes);
+}
+
+function iniciarTablaDependiente(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/Dependientes/tabla.php',
+        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
+        success: function (data) {
+            $('#modulo_dependientes_economicos').html(data);
+        }
+    });
+}
+
+
+
+function buscarDependiente(){ //BUSQUEDA
+    let buscar = document.getElementById("buscarDependiente").value.trim();
+    buscar = buscar.trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+    buscarlenth = buscar.length;
+    
+    if (buscarlenth == 0){
+        iniciarDependiente();
+    } else {
+        iniciarTablaCedulaByDependiente(buscar,id_tbl_empleados_hraes);
+    }
+}
+
+
+function iniciarTablaCedulaByDependiente(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/Dependientes/tabla.php',
+        data: { 
+            buscar: buscar,
+            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
+         },
+        success: function (data) {
+            $('#modulo_dependientes_economicos').html(data);
+        }
+    });
+}
+*/

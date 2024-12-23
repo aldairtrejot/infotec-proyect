@@ -1,9 +1,9 @@
 <div class="row font-size-modulo">
     <div class="col-9">
         <div class="form-inline">
-            <button onclick="agregarEditarTelefono(null)" type="button" class="btn btn-light" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><i class="fa fa-plus icono-pequeno-tabla"></i>
-                <span class="hide-menu text-button-add">&nbsp;Agregar</span>
+            <button onclick="agregarEditarTelefono(null)" class="btn btn-light"><i
+                    class="fa fa-plus icon-size-add"></i>
+                <span class="hide-menu text-button-add font-size-modulo">&nbsp;Agregar n&uacutem. Telef&oacutenico</span>
             </button>
         </div>
     </div>
@@ -15,13 +15,14 @@
 </div>
 
 <br>
-<div class="col-12 table-responsive">
-    <div class="text-center">
-        <table class="table table-bordered table-fixed" id="modulo_telefono">
-        </table>
+<div class="row">
+    <div class="col">
+        <div class="text-center">
+            <table class="table table-bordered" id="modulo_telefono" style="width:100%">
+            </table>
+        </div>
     </div>
 </div>
-
 
 <div class="row">
     <div class="col">
@@ -38,3 +39,4 @@
 </div>
 
 <?php include 'AgregarEditar.php' ?>
+

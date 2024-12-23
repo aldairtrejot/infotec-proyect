@@ -60,11 +60,11 @@ function guardarJefe() {
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Jefe inmediato modificado con éxito');
+                mensajeExito('Jefe inmediato modificado con éxito');
             } else if (data == 'add') {
-                notyf.success('Jefe inmediato agregado con éxito');  
+                mensajeExito('Jefe inmediato agregado con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(data);
             }
             $("#agregar_editar_jefe").modal("hide");
             buscarJefe();
@@ -76,10 +76,10 @@ function eliminarJefe(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "question",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#235B4E",
-        cancelButtonColor: "#6c757d",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -89,9 +89,9 @@ function eliminarJefe(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    notyf.success('Jefe inmediato eliminado con éxito')
+                    mensajeExito('Jefe inmediato eliminado con éxito')
                 } else {
-                    notyf.error(mensajeSalida);
+                    mensajeError(data);
                 }
                 buscarJefe();
             }

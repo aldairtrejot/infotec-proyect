@@ -8,19 +8,19 @@ $modelQuinquenioM = new ModelQuinquenioM();
 $listado = $modelQuinquenioM->listarById($id_tbl_empleados_hraes);
 
 $data =
-    '<table lass="table table-bordered table-fixed" id="tabla_quinquenio" style="width:100%">
-    <thead class="text-center">
+    '<table class="table table-sm" id="tabla_quinquenio" style="width:100%">
+    <thead>
         <tr>
-            <th class="col-wide-action">Acciones</th>
-            <th class="col-wide">Importe</th>
-            <th class="col-wide">Fecha</th>
+            <th>Acciones</th>
+            <th>Importe</th>
+            <th>Fecha</th>
         </tr>
     </thead>';
 
 if (pg_num_rows($listado) > 0) {
     while ($row = pg_fetch_row($listado)) {
         $data .=
-            '<tbody class="text-center">
+            '<tbody>
                         <tr>
                         <td>
                             <div class="btn-group">

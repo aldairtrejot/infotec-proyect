@@ -12,7 +12,7 @@ function validarFormaPago(){
             //agregarEditarByDbByFormatoPago();
             validarEstatusCuentaC(id_object, id_cat_estatus_formato_pago);
         } else {
-            notyf.error('Campo Cuenta clabe* invalida');
+            mensajeError('Campo Cuenta clabe* invalida');
         }
     }
 }
@@ -50,7 +50,7 @@ function validarEstatusCuentaC(id_object, id_cat_estatus_formato_pago) {
             if(bool){
                 agregarEditarByDbByFormatoPago();
             } else {
-                notyf.error(message);
+                mensajeError(message);
             }
         }
     );

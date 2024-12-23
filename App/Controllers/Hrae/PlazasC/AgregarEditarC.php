@@ -1,40 +1,33 @@
 <?php
-include '../../../Model/Hraes/Catalogos/CatPuestoM/CatPuestoM.php';
-include '../librerias.php';
+include '../../../../conexion.php';
+include '../../../View/validar_sesion.php';
+include '../../../Model/Hraes/PlazasM/PlazasM.php';
+include '../../../Model/Hraes/BitacoraM/BitacoraM.php';
 
-$row = new Row();
-$catalogoPuestoM = new catalogoPuestoM();
 $model = new modelPlazasHraes();
 $bitacoraM = new BitacoraM();
-$tablaPlazas = 'public.tbl_control_plazas_hraes';
-
-$id_cat_puesto_hraes = $_POST['id_cat_puesto_hraes'];
-$id_cat_aux_puesto = $_POST['id_cat_aux_puesto'];
-$id_cat_categoria_puesto = $_POST['id_cat_categoria_puesto'];
-
-$isValue = $row->returnArrayById($catalogoPuestoM->getIdOfTableAux($id_cat_puesto_hraes, $id_cat_aux_puesto, $id_cat_categoria_puesto));
+$tablaPlazas = 'tbl_control_plazas_hraes';
 
 $condicion = [
     'id_tbl_control_plazas_hraes' => $_POST['id_object']
 ];
 
 $datos = [
-    'num_plaza' => $_POST['num_plaza'],
     'id_cat_tipo_plazas' => $_POST['id_cat_plazas'],
-    'id_tbl_centro_trabajo_hraes' => $_POST['id_tbl_centro_trabajo_hraes'],
+    'id_cat_tipo_subtipo_contratacion_hraes' => $_POST['id_cat_tipo_contratacion_hraes'],
+    'id_cat_unidad_responsable' => $_POST['id_cat_unidad_responsable'],
     'id_cat_puesto_hraes' => $_POST['id_cat_puesto_hraes'],
-    'id_cat_aux_puesto' => $isValue[0],
+    'id_cat_zonas_tabuladores_hraes' => $_POST['id_cat_zonas_tabuladores_hraes'],
+    //'id_cat_niveles_hraes' => $_POST['id_cat_niveles_hraes'],
+    'id_tbl_zonas_pago_hraes' => $_POST['id_tbl_zonas_pago'],
+    'num_plaza' => $_POST['num_plaza'],
+    'fecha_ingreso_inst' => $_POST['fecha_ingreso_inst'],
+    'fecha_inicio_movimiento' => $_POST['fecha_inicio_movimiento'],
+    'fecha_termino_movimiento' => $_POST['fecha_termino_movimiento'],
+    'fecha_modificacion' => $_POST['fecha_modificacion'],
+    'id_tbl_centro_trabajo_hraes' => $_POST['id_tbl_centro_trabajo_hraes'],
     'id_cat_situacion_plaza_hraes' => $_POST['id_cat_situacion_plaza_hraes'],
-    'id_cat_unidad' => $_POST['id_cat_unidad'],
-    'id_cat_coordinacion' => $_POST['id_cat_coordinacion'],
-    'id_cat_tipo_trabajador' => $_POST['id_cat_tipo_trabajador'],
-    'id_cat_tipo_contratacion' => $_POST['id_cat_tipo_contratacion'],
-    'id_cat_tipo_programa' => $_POST['id_cat_tipo_programa'],
-    'id_cat_caracter_nombramiento' => $_POST['id_cat_caracter_nombramiento'],
-    'fecha_inicio' => $_POST['fecha_inicio'],
-    'fecha_fin' => $_POST['fecha_fin'],
-    'id_user' => $_SESSION['id_user'],
-    'fecha_usuario' => $timestamp,
+    'id_cat_plaza_unidad_adm' => $_POST['id_cat_plaza_unidad_adm'],
 ];
 
 $var = [
@@ -51,7 +44,7 @@ if ($_POST['id_object'] != null) { //Modificar
             'fecha' => $timestamp,
             'id_users' => $_SESSION['id_user']
         ];
-        $bitacoraM->agregarByArray($connectionDBsPro, $dataBitacora, 'public.bitacora_hraes');
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
         echo 'edit';
     }
 
@@ -64,7 +57,9 @@ if ($_POST['id_object'] != null) { //Modificar
             'fecha' => $timestamp,
             'id_users' => $_SESSION['id_user']
         ];
-        $bitacoraM->agregarByArray($connectionDBsPro, $dataBitacora, 'public.bitacora_hraes');
+        $bitacoraM->agregarByArray($connectionDBsPro,$dataBitacora,'bitacora_hraes');
         echo 'add';
     }
 }
+
+

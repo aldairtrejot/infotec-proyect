@@ -44,50 +44,44 @@ function agregarEditarRetardo(id_object){
         id_object: id_object
     },
         function (data) {
-            let jsonData = JSON.parse(data);
-            let entity = jsonData.response;  
+            var jsonData = JSON.parse(data);
+            var entity = jsonData.response;  
 
-            $("#fecha_rr").val(entity.fecha);
-            $("#hora_ss").val(entity.hora);
-            $("#observaciones_rr").val(entity.observaciones);
-
-            $("#quincena_rr").val(jsonData.quincena);
-            $("#periodo_quincena_rr").val(jsonData.periodoQuincena);
-
-            $('#id_cat_retardo_tipo').html(jsonData.catRetardoTipo); 
-            $('#id_cat_retardo_tipo').selectpicker('refresh');
-            $('#id_cat_retardo_estatus').html(jsonData.catRetardoEstatus); 
-            $('#id_cat_retardo_estatus').selectpicker('refresh');
-            $('.selectpicker').selectpicker();
+            $("#fecha_retardo").val(entity.fecha);
+            $("#hora_entrada").val(concatHora(entity.hora_entrada,entity.minuto_entrada));
+            $("#hora_salida").val(concatHora(entity.hora_salida,entity.minuto_salida));
         }
     );
 
     $("#agregar_editar_retardo").modal("show");
 }
 
-function salirAgregarEditarRetardo_(){
+function salirAgregarEditarRetardoH(){
     $("#agregar_editar_retardo").modal("hide");
 }
 
 
-function guardarRetardoX() {
+function guardarRetardo() {
+    let fecha_retardo = $("#fecha_retardo").val();
+    let hora_entrada = $("#hora_entrada").val();
+    let hora_salida = $("#hora_salida").val();
+    let id_object = $("#id_object").val();
+    hora_salida = hora_salida  ? hora_salida  : '0:0';
 
     $.post("../../../../App/Controllers/Hrae/RetardoC/AgregarEditarC.php", {
-        id_object: $("#id_object").val(),
-        id_tbl_empleados_hraes:id_tbl_empleados_hraes,
-        fecha: $("#fecha_rr").val(),
-        hora: $("#hora_ss").val(),
-        id_cat_retardo_tipo: $("#id_cat_retardo_tipo").val(),
-        id_cat_retardo_estatus: $("#id_cat_retardo_estatus").val(),
-        observaciones: $("#observaciones_rr").val(),
+        id_object: id_object,
+        fecha_retardo: fecha_retardo,
+        hora_entrada:hora_entrada,
+        hora_salida:hora_salida,
+        id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Retardo modificado con éxito');
+                mensajeExito('Retardo modificado con éxito');
             } else if (data == 'add') {
-                notyf.success('Retardo agregado con éxito');  
+                mensajeExito('Retardo agregado con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(data);
             }
             $("#agregar_editar_retardo").modal("hide");
             buscarRetardo();
@@ -95,14 +89,14 @@ function guardarRetardoX() {
     );
 }
 
-function eliminarRetardo_(id_object) {//ELIMINAR USUARIO
+function eliminarRetardo(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "question",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#235B4E",
-        cancelButtonColor: "#6c757d",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -112,9 +106,9 @@ function eliminarRetardo_(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    notyf.success('Retardo eliminado con éxito')
+                    mensajeExito('Retardo eliminado con éxito')
                 } else {
-                    notyf.error(mensajeSalida);
+                    mensajeError(data);
                 }
                 buscarRetardo();
             }
@@ -137,35 +131,45 @@ function addCero(time){
     }
     return time;
 }
+/*
+function iniciarRetardo(){
+    iniciarTablaRetardo(id_tbl_empleados_hraes);
+}
 
-
-function actualizarRetardo() {//ELIMINAR USUARIO
-    Swal.fire({
-        title: "Actualizar el Listado de Incidencias de Retardo",
-        text: "El proceso de actualización de la lista de retardos incluirá todas las asistencias registradas entre las 09:16 y las 09:31 hrs. Este procedimiento puede tardar algunos minutos en completarse.",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonColor: "#235B4E",
-        cancelButtonColor: "#6c757d",
-        confirmButtonText: "Si, confirmar",
-        cancelButtonText: "Cancelar"
-      }).then((result) => {
-        if (result.isConfirmed) {
-        fadeIn(); 
-
-        $.post("../../../../App/Controllers/Hrae/RetardoC/ActualizarC.php", {
-            },
-            function (data) {
-                console.log(data);
-                if (data){
-                    notyf.success('Proceso realizado con éxito')
-                } else {
-                    notyf.error(mensajeSalida);
-                }
-                fadeOut();
-                buscarRetardo();
-            }
-        );
-    }
+function iniciarTablaRetardo(id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
+        data: { id_tbl_empleados_hraes: id_tbl_empleados_hraes },
+        success: function (data) {
+            $('#tabla_retardo').html(data);
+        }
     });
 }
+
+
+
+
+campoFecha.addEventListener("change", function() {
+    let fecha = campoFecha.value;
+    iniciarTabla(fecha, id_tbl_empleados_hraes)
+});
+
+function iniciarTabla(buscar, id_tbl_empleados_hraes) { ///INGRESA LA TABLA
+    $.ajax({
+        type: 'POST',
+        url: '../../../../App/View/Hraes/Modulo/Retardo/tabla.php',
+        data: { 
+            buscar: buscar,
+            id_tbl_empleados_hraes: id_tbl_empleados_hraes,
+         },
+        success: function (data) {
+            console.log(data);
+            $('#tabla_retardo').html(data);
+        }
+    });
+}
+
+
+
+*/

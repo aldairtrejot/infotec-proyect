@@ -13,21 +13,14 @@ if (isset($_POST['busqueda'])) {
 }
 
 $data =
-    '<table class="table table-bordered table-fixed" id="t-table">
+    '<table class="table table-bordered" id="t-table" style="width:100%">
     <thead>
         <tr>
-            <th class="col-wide-action">Acciones</th>
-            <th class="col-wide-x-150">No Plaza</th>
-            <th class="col-wide">Zona Pagadora</th>
-            <th class="col-wide">R.F.C</th>
-            <th class="col-wide">CURP</th>
-            <th class="col-wide">Nombre</th>
-            <th class="col-wide">Primer Apellido</th>
-            <th class="col-wide">Segundo Apellido</th>
-            <th class="col-wide">Movimiento</th>
-            <th class="col-wide-x-300">CLUES</th>
-            <th class="col-wide">Cuenta Clabe</th>
-            <th class="col-wide">No Empleado</th>
+            <th>Acciones</th>
+            <th>Nombre</th>
+            <th>Curp</th>
+            <th>Rfc</th>
+            <th>N&uacutem. empleado</th>
         </tr>
     </thead>';
 
@@ -35,55 +28,34 @@ if (!$result = pg_query($connectionDBsPro, $query)) {
     exit(pg_result_error($connectionDBsPro));
 }
 if (pg_num_rows($result) > 0) {
-    while ($row = pg_fetch_row($result)) {
+    while ($row = pg_fetch_assoc($result)) {
         $data .=
             '<tbody>
                         <tr>
-                            <td class="col-wide-action">
+                            <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-edit icono-grande-tabla"></i></button>
                             <div class="dropdown-menu">
-                                <button onclick="agregarEditarDetalles(' . $row[0] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
+                                <button onclick="agregarEditarDetalles(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light"><i class="fas fa-edit icon-edit-table"></i> Modificar</button>
                                 <form action="../Modulo/index.php" method="POST">
-                                        <input type="hidden" name="id_tbl_empleados_hraes" value="' . $row[0]  . '" />
-                                        <button onclick="datosEmpleadosGetDetails(' . $row[0]  . ')" class="dropdown-item btn btn-light"><i class="fa fa-folder-open icon-edit-table"></i> Datos complem.</button>  
+                                        <input type="hidden" name="id_tbl_empleados_hraes" value="' . $row['id_tbl_empleados_hraes'] . '" />
+                                        <button onclick="datosEmpleadosGetDetails(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light"><i class="fa fa-folder-open icon-edit-table"></i> Datos complementarios</button>  
                                 </form>
-                                <button onclick="eliminarEntity(' . $row[0]  . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
+                                <button onclick="eliminarEntity(' . $row['id_tbl_empleados_hraes'] . ')" class="dropdown-item btn btn-light"><i class="far fa-trash-alt icon-delete-table"></i> Eliminar</button>  
                             </div>
                           </div>
                                 </td>
-                            <td class="col-wide-x-150">
-                                ' . $row[1] . ' 
+                            <td>
+                                ' . $row['nombre'] . ' ' . $row['primer_apellido'] . ' ' . $row['segundo_apellido'] . '
                             </td>
-                            <td class="col-wide">
-                                ' . $row[2] . ' 
+                            <td>
+                                ' . $row['curp'] . '
                             </td>
-                            <td class="col-wide">
-                                ' . $row[3] . ' 
+                            <td>
+                                ' . $row['rfc'] . '
                             </td>
-                            <td class="col-wide">
-                                ' . $row[4] . ' 
-                            </td>
-                            <td class="col-wide">
-                                ' . $row[5] . ' 
-                            </td>
-                            <td class="col-wide">
-                                ' . $row[6] . ' 
-                            </td>
-                            <td class="col-wide">
-                                ' . $row[7] . ' 
-                            </td>
-                            <td class="col-wide">
-                                ' . $row[8] . ' 
-                            </td>
-                            <td class="col-wide-x-300">
-                                ' . $row[9] . ' 
-                            </td>
-                            <td class="col-wide">
-                                ' . $row[10] . ' 
-                            </td>
-                            <td class="col-wide">
-                                ' . $row[11] . ' 
+                            <td>
+                                ' . $row['num_empleado'] . '
                             </td>
                         </tr>
                     </tbody>

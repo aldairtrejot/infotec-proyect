@@ -22,7 +22,7 @@ function validarLicencia(){
         if(horas_max_dia.length < 3){
             validateEstatus_(id_object,id_cat_estatus_incidencias); // ---> VALIDA QUE EL ESTATUS CORRESPONDA
         } else {
-            notyf.error('Campo Hora debe tener un máximo de 2 caracteres');
+            mensajeError('Campo Hora debe tener un máximo de 2 caracteres');
         }
     }
 }
@@ -43,7 +43,7 @@ function validateEstatus_(id_object,id_estatus){
             if (bool){
                 guardarLicencia();
             } else {
-                notyf.error(message);
+                mensajeError(message);
             }
         }
     );

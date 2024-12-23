@@ -38,15 +38,12 @@ function agregarEditarEspecialidad(id_object){
     },
         function (data) {
             let jsonData = JSON.parse(data);
-            let response = jsonData.response; 
             let especialidad = jsonData.especialidad; 
+            let response = jsonData.response; 
 
             $('#cedula_espec_').val(response.cedula);
-
             $('#id_cat_especialidad_hraes').empty();
             $('#id_cat_especialidad_hraes').html(especialidad); 
-            $('#id_cat_especialidad_hraes').selectpicker('refresh');
-            $('.selectpicker').selectpicker();
         }
     );
 
@@ -61,17 +58,17 @@ function salirAgregarEditarEspecialidad(){
 function guardarCedula() {
     $.post("../../../../App/Controllers/Hrae/EspecialidadC/AgregarEditarC.php", {
         id_object: $("#id_object").val(),
-        cedula: $("#cedula_espec_").val(),
         id_cat_especialidad_hraes: $("#id_cat_especialidad_hraes").val(),
+        cedula: $("#cedula_espec_").val(),
         id_tbl_empleados_hraes:id_tbl_empleados_hraes
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Especialidad modificada con éxito');
+                mensajeExito('Especialidad modificada con éxito');
             } else if (data == 'add') {
-                notyf.success('Especialidad agregada con éxito');  
+                mensajeExito('Especialidad agregada con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(data);
             }
             $("#agregar_editar_especialidad").modal("hide");
             buscarEspecialidad();
@@ -83,10 +80,10 @@ function eliminarEspecialidad(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "question",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#235B4E",
-        cancelButtonColor: "#6c757d",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -96,9 +93,9 @@ function eliminarEspecialidad(id_object) {//ELIMINAR USUARIO
             },
             function (data) {
                 if (data == 'delete'){
-                    notyf.success('Especialidad eliminada con éxito')
+                    mensajeExito('Especialidad eliminada con éxito')
                 } else {
-                    notyf.error(mensajeSalida);
+                    mensajeError(data);
                 }
                 buscarEspecialidad();
             }

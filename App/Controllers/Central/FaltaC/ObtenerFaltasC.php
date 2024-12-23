@@ -12,15 +12,7 @@ if ($faltaModelM->process_1()) {
         if ($faltaModelM->process_3()) {
             if ($faltaModelM->process_4()) {
                 if ($faltaModelM->process_5()) {
-                    if ($faltaModelM->process_6()) {
-                        if ($faltaModelM->process_7()) {
                     $bool = true;
-                        } else {
-                            $message = 'Error en p7';
-                         }
-                    } else {
-                     $message = 'Error en p6';
-                    }
                 } else {
                     $message = 'Error en p5';
                 }

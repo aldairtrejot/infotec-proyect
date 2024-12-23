@@ -62,7 +62,6 @@ function agregarEditarByDbByCedula() {
         id_tbl_empleados_hraes:id_tbl_empleados_hraes,
     },
         function (data, status) {
-         
             if (data == 'edit'){
                 mensajeExito('Cédula profesional modificada con éxito');
             } else if (data == 'add') {

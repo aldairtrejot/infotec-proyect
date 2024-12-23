@@ -12,20 +12,22 @@ if (isset($_POST['busqueda'])) {
 }
 
 $data =
-    '<table class="table table-bordered table-fixed" id="modulo_telefono" style="width:100%">
-    <thead class="text-center">
+    '<table class="table table-bordered" id="modulo_telefono" style="width:100%">
+    <thead>
         <tr>
-            <th class="col-wide-action">Acciones</th>
-            <th class="col-wide">N&uacutem. Telefonico</th>
-            <th class="col-wide">Tel&eacutefono fijo</th>
-            <th class="col-wide">Estatus</th>
+            <th>Acciones</th>
+            <th>N&uacutem. Telefonico</th>
+            <!--
+            <th>Tel&eacutefono fijo</th>
+            -->
+            <th>Estatus</th>
         </tr>
     </thead>';
 
 if (pg_num_rows($listado) > 0) {
     while ($row = pg_fetch_row($listado)) {
         $data .=
-            '<tbody class="text-center">
+            '<tbody>
                         <tr>
                         <td>
                         <div class="btn-group">
@@ -39,9 +41,11 @@ if (pg_num_rows($listado) > 0) {
                             <td>
                                 ' . $row[1] . '
                             </td>
+                            <!--
                             <td>
                                 ' . $row[2] . '
                             </td>
+                            -->
                             <td>
                                 ' . $row[3] . '
                             </td>

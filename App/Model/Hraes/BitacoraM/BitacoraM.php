@@ -1,6 +1,6 @@
 <?php
 
-$timestamp = 'NOW()';
+$timestamp = date('Y-m-d H:i:s');
 class BitacoraM
 {
     function agregarByArray($conexion, $datos,$nombre)

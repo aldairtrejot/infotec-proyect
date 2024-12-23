@@ -41,8 +41,6 @@ function agregarEditarCapacidad(id_object){
 
             $('#id_cat_capacidad_dif_hraes').empty();
             $('#id_cat_capacidad_dif_hraes').html(capacidad); 
-            $('#id_cat_capacidad_dif_hraes').selectpicker('refresh');
-            $('.selectpicker').selectpicker();
         }
     );
 
@@ -62,11 +60,11 @@ function agregarEditarByDbByCapacidad() {
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Elemento modificado con éxito');
+                mensajeExito('Elemento modificado con éxito');
             } else if (data == 'add') {
-                notyf.success('Elemento agregado con éxito');  
+                mensajeExito('Elemento agregado con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(mensajeSalida);
             }
             $("#agregar_editar_capacidad").modal("hide");
             buscarCapacidadesDif();
@@ -79,10 +77,10 @@ function eliminarCapacidad(id_object) {//ELIMINAR USUARIO
     Swal.fire({
         title: "¿Está seguro?",
         text: "¡No podrás revertir esto!",
-        icon: "question",
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#235B4E",
-        cancelButtonColor: "#6c757d",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
         confirmButtonText: "Si, eliminar",
         cancelButtonText: "Cancelar"
       }).then((result) => {
@@ -92,9 +90,9 @@ function eliminarCapacidad(id_object) {//ELIMINAR USUARIO
             },
             function (data, status) {
                 if (data == 'delete'){
-                    notyf.success('Elemento eliminado con éxito')
+                    mensajeExito('Elemento eliminado con éxito')
                 } else {
-                    notyf.error(mensajeSalida);
+                    mensajeError(mensajeSalida);
                 }
                 buscarCapacidadesDif();
             }

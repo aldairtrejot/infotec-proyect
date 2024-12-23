@@ -63,11 +63,11 @@ function guardarDomicilio() {
     },
         function (data) {
             if (data == 'edit'){
-                notyf.success('Domicilio modificado con éxito');
+                mensajeExito('Domicilio modificado con éxito');
             } else if (data == 'add') {
-                notyf.success('Domicilio agregado con éxito');  
+                mensajeExito('Domicilio agregado con éxito');  
             } else {
-                notyf.error(mensajeSalida);
+                mensajeError(data);
             }
             iniciarDomicilio();
         }

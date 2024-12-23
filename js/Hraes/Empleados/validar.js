@@ -25,14 +25,9 @@ function validar(){
         caracteresCount('Núm. de seguro social',12,nss)
     ){
         if (nss.length == 11 || nss.length == 0){
-            if (nss > 0 || nss.length == 0){
-                validarUnique(rfc,curp,num_empleado,id_object);
-            } else {
-                notyf.error('Núm. de seguro social no valido');
-            }
-            
+            validarUnique(rfc,curp,num_empleado,id_object);
         } else {
-            notyf.error('El Núm. de seguro social debe tener 11 caracteres');
+            mensajeError('El Núm. de seguro social debe tener 11 caracteres');
         }
     }
 }
@@ -46,7 +41,6 @@ function validarUnique(rfc,curp,numEmpleado,id_object){
         id_object:id_object
     },
         function (data) {
-            console.log(data);
             let jsonData = JSON.parse(data);//se obtiene el json
             let bool = jsonData.bool; 
             let message = jsonData.message;
@@ -54,7 +48,7 @@ function validarUnique(rfc,curp,numEmpleado,id_object){
             if(bool){
                 agregarEditarByDb();
             } else {
-                notyf.error(message);
+                mensajeError(message);
             }
         }
     );
