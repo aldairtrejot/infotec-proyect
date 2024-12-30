@@ -1,2 +1,7 @@
 
 conexion.php
+App/Controllers/Central/LicenciaC/AgregarEditarC.php
+App/Controllers/Central/LicenciaC/DetallesC.php
+App/View/Central/Modulo/Licencias/AgregarEditar.php
+App/Model/Central/LicenciasM/LicenciasM.php
+App/Controllers/Central/LicenciaC/EliminarC.php

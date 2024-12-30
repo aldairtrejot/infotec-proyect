@@ -6,6 +6,17 @@
                 <h6 class="card-header text-center background-modal color-text-tittle">Tipo de incidencia</h6>
                 <div class="nav flex-column nav-pills text-tittle-card-nav-x" id="v-tabs-tab" role="tablist"
                     aria-orientation="vertical">
+<<<<<<< HEAD
+                    <a onclick="buscarLicencia();" class="nav-link-mod active" id="v-tabs-home-tab" data-toggle="pill"
+                        href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">
+                        <i class="fa fa-folder-open mr-2"></i> Licencias</a>
+                    <a onclick="buscarIncidencia();" class="nav-link-mod" id="v-tabs-incidencias-tab" data-toggle="pill"
+                        href="#v-tabs-incidencias" role="tab" aria-controls="v-tabs-incidencias" aria-selected="false">
+                        <i class="fa fa-folder-open mr-2"></i> Incidencias</a>
+                    <a onclick="buscarPreventivas();" class="nav-link-mod" id="v-tabs-preventivas-tab" data-toggle="pill"
+                        href="#v-tabs-preventivas" role="tab" aria-controls="v-tabs-preventivas" aria-selected="false">
+                        <i class="fa fa-folder-open mr-2"></i> Preventivas</a>
+=======
                     <a onclick="buscarRetardo();" class="nav-link-mod active" id="v-tabs-home-tab" data-toggle="pill"
                         href="#v-tabs-home" role="tab" aria-controls="v-tabs-home" aria-selected="true">
                         <i class="fa fa-folder-open mr-2"></i> Retardos</a>
@@ -17,6 +28,7 @@
                         role="tab" aria-controls="v-tabs-messages" aria-selected="false">
                         <i class="fa fa-folder-open mr-2"></i> Licencia médica</a>
 
+>>>>>>> parent of 606dea87 (E.CAMPA)
                 </div>
             </div>
         </div>
@@ -25,6 +37,8 @@
             <div class="tab-content" id="v-tabs-tabContent">
                 <div class="tab-pane fade show active" id="v-tabs-home" role="tabpanel"
                     aria-labelledby="v-tabs-home-tab">
+<<<<<<< HEAD
+=======
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
@@ -39,10 +53,14 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="v-tabs-profile" role="tabpanel" aria-labelledby="v-tabs-profile-tab">
+>>>>>>> parent of 606dea87 (E.CAMPA)
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card font-size-modulo shadow-lg">
+<<<<<<< HEAD
+                                    <h5 class="card-header text-center background-modal color-text-tittle">Licencias</h5>
+=======
                                     <h5 class="card-header text-center background-modal color-text-tittle">Faltas</h5>
                                     <div class="card-body">
                                         <?php include 'Falta/index.php' ?>
@@ -58,6 +76,7 @@
                             <div class="col-12">
                                 <div class="card font-size-modulo shadow-lg">
                                     <h5 class="card-header text-center background-modal color-text-tittle">Licencias m&eacutedicas</h5>
+>>>>>>> parent of 606dea87 (E.CAMPA)
                                     <div class="card-body">
                                         <?php include 'Licencias/index.php' ?>
                                     </div>
@@ -66,6 +85,37 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+                <div class="tab-pane fade" id="v-tabs-incidencias" role="tabpanel" aria-labelledby="v-tabs-incidencias-tab">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card font-size-modulo shadow-lg">
+                                    <h5 class="card-header text-center background-modal color-text-tittle">Otras incidencias</h5>
+                                    <div class="card-body">
+                                        <?php include 'Incidencias/index.php' ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-tabs-preventivas" role="tabpanel" aria-labelledby="v-tabs-preventivas-tab">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card font-size-modulo shadow-lg">
+                                    <h5 class="card-header text-center background-modal color-text-tittle">Preventivas de pago</h5>
+                                    <div class="card-body">
+                                        <?php include 'Preventivas/index.php' ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+=======
+>>>>>>> parent of 606dea87 (E.CAMPA)
             </div>
         </div>
     </div>

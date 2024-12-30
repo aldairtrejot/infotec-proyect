@@ -10,7 +10,7 @@
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col padding-left-0">
-                        <h4>IMSS-BIENESTAR CENTRAL</h4>
+                        <h4>HRAES</h4>
                     </div>
                     <div class="col-auto">
                         <button class="btn btn-light btn-circle" type="button" data-toggle="tooltip"
@@ -53,10 +53,6 @@
                                     href="#nav-escolaridad" onclick="buscarRetardo();" role="tab"
                                     aria-controls="nav-contact" aria-selected="false"><i class="fa fa-history"></i>
                                     Retardos</a>
-                                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
-                                    href="#nav-escolaridad" onclick="buscarPreventiva();" role="tab"
-                                    aria-controls="nav-contact" aria-selected="false"><i class="fa fa-history"></i>
-                                    Retardos</a>    
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
@@ -91,19 +87,19 @@
 <?php include 'ModalUsuario.php' ?>
 
 <!-- -->
-<script src="../../../../js/Ib/Asistencias/Reporte/Reporte.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Reporte/Reporte.js"></script>
 
-<script src="../../../../js/Ib/Asistencias/Asistencias/Listado.js"></script>
-<script src="../../../../js/Ib/Asistencias/Asistencias/Busqueda.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Asistencias/Listado.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Asistencias/Busqueda.js"></script>
 
-<script src="../../../../js/Ib/Asistencias/Falta/Listado.js"></script>
-<script src="../../../../js/Ib/Asistencias/Falta/Busqueda.js"></script>
-<script src="../../../../js/Ib/Asistencias/Falta/Masivo.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Falta/Listado.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Falta/Busqueda.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Falta/Masivo.js"></script>
 
 
-<script src="../../../../js/Ib/Asistencias/Retardos/Listado.js"></script>
-<script src="../../../../js/Ib/Asistencias/Retardos/Busqueda.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Retardos/Listado.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Retardos/Busqueda.js"></script>
 
 <!-- -->
-<script src="../../../../js/Ib/Asistencias/Inicio.js"></script>
-<script src="../../../../js/Ib/Asistencias/Carga.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Inicio.js"></script>
+<script src="../../../../js/Hraes/Asistencias/Carga.js"></script>

@@ -4,7 +4,7 @@ $(document).ready(function () {
     buscarEmpleado();
 });
 
-function buscarEmpleado(){ //BUSQUEDA
+function buscarEmpleado(){ //BUSQUEDA   
     let buscarNew = clearElement(buscar);
     let buscarlenth = lengthValue(buscarNew);
     

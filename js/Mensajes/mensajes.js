@@ -70,13 +70,12 @@ function validarNull(cadena){
   return bool;
 } 
 
-function validarData(data, text){
-  let bool = true;
-  if (validarNull(data)){
-    notyf.error('Campo '+ text + '* no puede estar vacio.');
-      bool = false;
-  } 
-  return bool;
+function validarData(value, fieldName) {
+  if (!value) {
+      notyf.error(`Campo ${fieldName}* no puede estar vacío`);
+      return false;
+  }
+  return true;
 }
 
 /*

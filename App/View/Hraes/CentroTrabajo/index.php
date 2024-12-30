@@ -9,7 +9,11 @@
                         <div class="vertical-line"></div>
                     </div>
                     <div class="col padding-left-0">
+<<<<<<< HEAD
+                        <h4>HRAES</h4>
+=======
                         <h4>Hospital Regional de Alta Especialidad</h4>
+>>>>>>> parent of 606dea87 (E.CAMPA)
                     </div>
                 </div>
             </div>
